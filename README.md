@@ -1,5 +1,5 @@
-# FITLY - Fitness Tracker
-Welcome to **FITLY**, the fitness application designed to help users track progress, set goals, manage nutrition, and achieve greatness. 
+# FitLy - Fitness Tracker
+Welcome to **FitLy**, the fitness application designed to help users track progress, set goals, manage nutrition, and achieve greatness. 
 
 ## Technologies
 - Python
