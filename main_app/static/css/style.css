@@ -17,6 +17,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  justify-content: space-between;
   font-size: 1.2rem;
 }
 
@@ -41,45 +42,18 @@ a {
   cursor: pointer;
 }
 
-.brand-logo {
+.logo {
+  margin-right: 200px;
   font-size: 45px;
   font-weight: 600;
 }
 
-.showcase {
-  background: url('../img/showcase.jpeg') no-repeat center center/cover;
-  height: 600px;
-}
-
-.showcase-container {
-  margin: auto;
-  max-width: 1100px;
-  overflow: auto;
-  padding: 0 20px;
-}
-
-.showcase-content {
-  color: #fff;
-  text-align: center;
-  padding-top: 170px;
-}
-
-.showcase-content h1 {
-  font-size: 80px;
-  line-height: 1.2em;
-}
-
-.showcase-content p {
-  font-size: 40px;
-  padding-bottom: 20px;
-  line-height: 1.7em;
-}
 
 main {
   flex-grow: 1;
 }
 
-footer>div {
+footer {
   padding-bottom: 8px;
   text-align: center;
 }
