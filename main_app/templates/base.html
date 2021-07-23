@@ -12,7 +12,7 @@
 <body>
   <header>
     <nav class="navbar">
-      <div class="nav-wrapper">
+      <div class="nav-container">
         <ul>
           <li>
             <a class="brand-logo" href="{% url 'home' %}">Fitly</a>
@@ -20,11 +20,21 @@
         </ul>
         <ul class="nav-links">
           <li><a href="">About</a></li>
-          <li><a href="">Signup</a></li>
+          <li><a href="">Exercise</a></li>
+          <li><a href="">Food</a></li>
           <li><a href="">Login</a></li>
+          <li><a href="">Signup</a></li>
         </ul>
       </div>
     </nav>
+    <div class="showcase">
+      <div class="showcase-container">
+        <div class="showcase-content">
+          <h1><span>Fitly</span></h1>
+          <p class="sub-title">Workout & Fitness Tracker</p>
+        </div>
+      </div>
+    </div>
   </header>
   <main class="container">
     {% block content %}
