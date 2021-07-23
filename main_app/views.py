@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-
+from .forms import ProfileForm
 
 # Create your views here.
 def home(request):
@@ -10,4 +10,5 @@ def signup(request):
   return render(request, 'user/signup.html')
 
 def profile(request):
-  return render(request, 'user/profile.html')
+  profile_form = ProfileForm()
+  return render(request, 'user/profile.html', {'profile_form': profile_form})

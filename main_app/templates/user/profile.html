@@ -3,31 +3,10 @@
 
 <h1>My Profile</h1>
 <div class="user-profile">
-    <form action="" method="post">
+    <form action="" method="POST">
         {% csrf_token %}
-      <div class="input-field col s12 l6">
-        <label for=""></label>
-        <input type="text" id="" class="">
-      </div>
-      <div class="input-field col s12 l6">
-        <label for=""></label>
-        <input type="text" id="" class="">
-      </div>
-      <div class="input-field col s12 l6">
-        <label for=""></label>
-        <input type="text" id="" class="">
-      </div>
-      <div class="input-field col s12 l6">
-        <label for=""></label>
-        <input type="text" id="" class="">
-      </div>
-      <div class="input-field col s12">
-        <label for="" data-error="wrong" data-success="right"></label>
-        <input type="text" id="" class="">
-        <div class="input-field col s12">  
-        <input type="submit" class="btn" value="Save Profile">
-        </div>
-      </div>
+        {{ profile_form.as_p }}
+        <input type="submit" class="btn" value="Save Profile"
     </form>
     </div>
 
