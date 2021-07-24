@@ -3,11 +3,12 @@
 
 <h1>My Profile</h1>
 <div class="user-profile">
-    <form action="" method="POST">
+    <form action="{% url 'profile_form' user.id %}" method="POST">
         {% csrf_token %}
         {{ profile_form.as_p }}
         <input type="submit" class="btn" value="Save Profile"
     </form>
+
     </div>
 
 
