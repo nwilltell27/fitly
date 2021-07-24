@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>My Profile</h1>
+<h1> My Profile </h1>
 <div class="user-profile">
     <form action="{% url 'profile_form' user.id %}" method="POST">
         {% csrf_token %}
