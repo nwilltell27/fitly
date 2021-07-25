@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Your Exercise History</h1>
+
+{% for elog in elogs %}
+    {{elog.user_id}} {{elog.goal_BMI}} {{elog.name}} {{elog.distance_miles}} {{elog.reps_laps}}
+{% endfor %}
+
+{% endblock %}
