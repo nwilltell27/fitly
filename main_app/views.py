@@ -1,7 +1,18 @@
 from django.shortcuts import redirect, render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .forms import ProfileForm
 from .models import UserProfile, Elog
+
+class User:
+  def __init__(self, user_id, first_name, last_name, email, password):
+    self.user_id = user_id
+    self.first_name = first_name
+    self.last_name = last_name
+    self.email = email
+    self.password = password
+
+users = [
+  User('juliav', 'Julia', 'Vavrinyuk', 'juliav@fitly.com', 'fitly'),
+]
 
 # Create your views here.
 def home(request):
@@ -10,21 +21,8 @@ def home(request):
 def signup(request):
   return render(request, 'user/signup.html')
 
-def profile_form(request, user_id):
-  form = ProfileForm(request.POST)
-  if form.is_valid():
-    new_form = form.save(commit=False)
-    new_form.user_id = user_id
-    new_form.save()
-  return redirect('profile', user_id=user_id)
-
-def profile(request, user_id):
-  user = UserProfile.objects.get(id=user_id)
-  profile_form = ProfileForm()
-  return render(request, 'user/profile.html', {
-    'user': user,
-    'profile_form': profile_form
-  })
+def user_index(request):
+  return render(request, 'user/index.html', {'users': users})
 
 class ElogCreate(CreateView):
   model = Elog

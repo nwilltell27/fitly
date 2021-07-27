@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h1>Profile Summary</h1>
+    {%  for user in users %}
+    <hr>    
+        <div> 
+            <table style="width:100%">
+                <tr>
+                    <th>User ID:</th>
+                    <td>{{ user.user_id }}</td>
+                </tr>
+                <tr>
+                    <th>First Name:</th>
+                    <td>{{ user.first_name }}</td>
+                </tr>
+                <tr>
+                    <th>Last Name:</th>
+                    <td>{{ user.last_name }}</td>
+                </tr>
+                <tr>
+                    <th>Email:</th>
+                    <td>{{ user.email }}</td>
+                </tr>
+                <tr>
+                    <th>Password:</th>
+                    <td>{{ user.password }}</td>
+            </table>
+            </div>
+        </div>
+    {% endfor%}
+{% endblock %}
