@@ -29,6 +29,12 @@ class UserProfile(models.Model):
     goal_carbs_grams = models.IntegerField()
     goal_proteins_grams = models.IntegerField()
     goal_fats_grams = models.IntegerField()
+  
+    def __str__(self):
+      return self.user_id
+
+    def get_absolute_url(self):
+      return reverse('detail', kwargs={'user_id': self.id})
 
 class User(models.Model):
   first_name = models.CharField(max_length=100)
@@ -37,14 +43,10 @@ class User(models.Model):
   password = models.TextField(max_length=100)
   profile = models.ManyToManyField(UserProfile)
 
+  def __str__(self):
+      return self.first_name
+
 '''
-    def __str__(self):
-      return self.user_id
-
-    def get_absolute_url(self):
-      return reverse('detail', kwargs={'user_id': self.id})
-      
-
 class Exercise(models.Model):
     name = models.CharField(max_length=50)
     time_minutes = models.IntegerField()
@@ -105,12 +107,11 @@ class Flog(models.Model):
     name = models.CharField(max_length=50)
     servings = models.DecimalField(max_digits=5, decimal_places=2) 
     user_id = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-''''
+'''
     def __str__(self):
       return self.name
 
     def get_absolute_url(self):
       return reverse('flog_detail', kwargs={'date_time': self.id})
 '''
-
 
