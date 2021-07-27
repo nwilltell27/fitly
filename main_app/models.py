@@ -35,8 +35,8 @@ class User(models.Model):
   last_name = models.CharField(max_length=100)
   email = models.TextField(max_length=100)
   password = models.TextField(max_length=100)
-  user_id = models.ManyToManyField(UserProfile)
-  
+  profile = models.ManyToManyField(UserProfile)
+
 '''
     def __str__(self):
       return self.user_id
