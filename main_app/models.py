@@ -9,6 +9,7 @@ MEAL_TYPE = (
       ('S', 'Snack')
     )
 
+
 class UserProfile(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     height_feet = models.IntegerField()  # so they there feet in the height_feet field and the remaining inches in the height_inches
@@ -28,12 +29,21 @@ class UserProfile(models.Model):
     goal_carbs_grams = models.IntegerField()
     goal_proteins_grams = models.IntegerField()
     goal_fats_grams = models.IntegerField()
+
+class User(models.Model):
+  first_name = models.CharField(max_length=100)
+  last_name = models.CharField(max_length=100)
+  email = models.TextField(max_length=100)
+  password = models.TextField(max_length=100)
+  user_id = models.ManyToManyField(UserProfile)
+  
 '''
     def __str__(self):
       return self.user_id
 
     def get_absolute_url(self):
       return reverse('detail', kwargs={'user_id': self.id})
+      
 
 class Exercise(models.Model):
     name = models.CharField(max_length=50)
