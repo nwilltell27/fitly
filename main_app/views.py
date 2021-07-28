@@ -12,15 +12,17 @@ def about(request):
   return render(request, 'about.html')
 
 def signup(request):
+  error_message = ''
   if request.method == 'POST':
     form = UserCreationForm(request.POST)
     if form.is_valid():
       user = form.save()
       login(request, user)
       return redirect('user_index')
+    else: error_message = 'Invalid Signup Data - Please Try Again'
 
   form = UserCreationForm()
-  return render(request, 'registration/signup.html', {'form': form})
+  return render(request, 'registration/signup.html', {'form': form, 'error_message': error_message})
 
 def user_index(request):
   users = User.objects.all()
