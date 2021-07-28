@@ -10,7 +10,7 @@ MEAL_TYPE = (
     )
 
 class UserProfile(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     height_feet = models.IntegerField()  # so they there feet in the height_feet field and the remaining inches in the height_inches
     height_inches = models.IntegerField()  
     current_weight = models.DecimalField(max_digits=5, decimal_places=2)
@@ -50,19 +50,23 @@ class Exercise(models.Model):
 '''
 class Elog(models.Model):
     date_time = models.DateTimeField()
-    #name = models.ForeignKey(Exercise, null=True, on_delete=models.SET_NULL) # upon delete, removes pointer from parent, but leaves row
+    name = models.CharField(max_length=50)
     distance_miles = models.DecimalField(max_digits=5, decimal_places=2) 
+    length_of_time = models.IntegerField(default=0)
     reps_laps = models.IntegerField()  
     weight_pounds = models.DecimalField(max_digits=5, decimal_places=2) # for resistant training
     intensity = models.IntegerField() # 1 - 5
     pace_minutes_per_mile = models.IntegerField()
     calories_burned = models.IntegerField()
-    user_id = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-'''
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+
     def __str__(self):
-      return self.user
+      return self.name
+
     def get_absolute_url(self):
-      return reverse('elog_detail', kwargs={'date_time': self.id})
+      return reverse('elogs/detail', args={'user_id': self.request.user})
+
+'''
 class Food(models.Model):
     name = models.CharField(max_length=50)
     brand = models.CharField(max_length=50)
@@ -86,10 +90,11 @@ class Flog(models.Model):
     meal_type = models.CharField(max_length = 1)
     name = models.CharField(max_length=50)
     servings = models.DecimalField(max_digits=5, decimal_places=2) 
-    user_id = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-''''
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+
     def __str__(self):
       return self.name
+'''
     def get_absolute_url(self):
       return reverse('flog_detail', kwargs={'date_time': self.id})
 '''
