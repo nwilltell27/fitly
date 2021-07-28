@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from .models import Elog, UserProfile
+from django.contrib.auth.models import User
 from django.urls import reverse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .forms import ProfileForm
-from .models import UserProfile
+from .forms import ProfileForm, ElogForm
 
 # Create your views here.
 def home(request):
@@ -28,18 +28,37 @@ def profile(request, user_id):
     'profile_form': profile_form
   })
 
-
 class ElogCreate(CreateView):
   model = Elog
-  fields = '__all__'
+  fields = [ 
+    'date_time',
+    'name', 
+    'distance_miles', 
+    'length_of_time', 
+    'reps_laps', 
+    'weight_pounds', 
+    'intensity', 
+    'pace_minutes_per_mile', 
+    'calories_burned']
+
+def get_initial(self):
+    return { 'user_id': self.request.user }
 
 class ElogUpdate(UpdateView):
   model = Elog
-  fields = ['name', 'distance_miles', 'length_of_time', 'reps_laps', 'weight_pounds', 'intensity', 'pace_minutes_per_mile', 'calories_burned']
+  fields = [ 
+    'name', 
+    'distance_miles', 
+    'length_of_time', 
+    'reps_laps', 
+    'weight_pounds', 
+    'intensity', 
+    'pace_minutes_per_mile', 
+    'calories_burned']
 
 class ElogDelete(DeleteView):
   model = Elog
-  success_url = 'elogs/detail.html'
+  success_url = '/elogs/'
 
 def elogs_index(request):
   elogs = Elog.objects.all()

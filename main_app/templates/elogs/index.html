@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Your Exercise History</h1>
+<h1>List of all users and their exercises</h1>
 
 {% for elog in elogs %}
-    {{elog.user_id}} {{elog.goal_BMI}} {{elog.name}} {{elog.distance_miles}} {{elog.reps_laps}}
+    {{elog.user_id}} {{elog.name}} {{elog.distance_miles}} {{elog.reps_laps}}
 {% endfor %}
 
 {% endblock %}

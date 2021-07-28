@@ -54,7 +54,6 @@ class Exercise(models.Model):
 '''
 class Elog(models.Model):
     date_time = models.DateTimeField()
-    #name = models.ForeignKey(Exercise, null=True, on_delete=models.SET_NULL) # upon delete, removes pointer from parent, but leaves row
     name = models.CharField(max_length=50)
     distance_miles = models.DecimalField(max_digits=5, decimal_places=2) 
     length_of_time = models.IntegerField(default=0)
@@ -69,8 +68,7 @@ class Elog(models.Model):
       return self.name
 
     def get_absolute_url(self):
-      #return reverse('detail', kwargs={'elog_id': self.id})
-      return reverse('elogs/detail', args={self.id})
+      return reverse('elogs/detail', args={'user_id': self.request.user})
 
 '''
 class Food(models.Model):
