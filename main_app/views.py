@@ -9,6 +9,9 @@ from .forms import ProfileForm, ElogForm
 def home(request):
   return render(request, 'home.html')
 
+def about(request):
+  return render(request, 'about.html')
+
 def signup(request):
   return render(request, 'user/signup.html')
 
@@ -67,4 +70,3 @@ def elogs_index(request):
 def elogs_detail(request, user_id):
   userprofile = UserProfile.objects.get(id=user_id)
   return render(request, 'elogs/detail.html', {'userprofile': userprofile})
-  
