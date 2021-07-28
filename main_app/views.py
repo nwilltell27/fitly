@@ -7,6 +7,9 @@ from .models import UserProfile, Elog
 def home(request):
   return render(request, 'home.html')
 
+def about(request):
+  return render(request, 'about.html')
+
 def signup(request):
   return render(request, 'user/signup.html')
 
