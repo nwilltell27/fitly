@@ -31,10 +31,8 @@ class UserProfile(models.Model):
 '''
     def __str__(self):
       return self.user_id
-
     def get_absolute_url(self):
       return reverse('detail', kwargs={'user_id': self.id})
-
 class Exercise(models.Model):
     name = models.CharField(max_length=50)
     time_minutes = models.IntegerField()
@@ -45,10 +43,8 @@ class Exercise(models.Model):
     pace_per_mile = models.IntegerField()
     calories_burned = models.IntegerField()
     user_id = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-
     def __str__(self):
       return self.user
-
     def get_absolute_url(self):
       return reverse('exercise_detail', kwargs={'name': self.id})
 '''
@@ -84,10 +80,8 @@ class Food(models.Model):
     proteins_grams = models.IntegerField() # 1 - 5
     fats_grams = models.IntegerField()
     user_id = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-
     def __str__(self):
       return self.name
-
     def get_absolute_url(self):
       return reverse('food_detail', kwargs={'name': self.id})
 '''
@@ -104,5 +98,4 @@ class Flog(models.Model):
     def get_absolute_url(self):
       return reverse('flog_detail', kwargs={'date_time': self.id})
 '''
-
 

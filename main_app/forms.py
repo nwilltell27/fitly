@@ -17,4 +17,3 @@ class ElogForm(ModelForm):
             'intensity', 
             'pace_minutes_per_mile', 
             'calories_burned', ]
-
