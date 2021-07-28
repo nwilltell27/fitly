@@ -1,7 +1,8 @@
 from django.shortcuts import redirect, render
+from django.contrib.auth import login
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .forms import ProfileForm
-from .models import UserProfile, Elog
+from .models import UserProfile, User, Elog
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
 def home(request):
@@ -11,23 +12,19 @@ def about(request):
   return render(request, 'about.html')
 
 def signup(request):
-  return render(request, 'user/signup.html')
+  if request.method == 'POST':
+    form = UserCreationForm(request.POST)
+    if form.is_valid():
+      user = form.save()
+      login(request, user)
+      return redirect('user_index')
 
-def profile_form(request, user_id):
-  form = ProfileForm(request.POST)
-  if form.is_valid():
-    new_form = form.save(commit=False)
-    new_form.user_id = user_id
-    new_form.save()
-  return redirect('profile', user_id=user_id)
+  form = UserCreationForm()
+  return render(request, 'registration/signup.html', {'form': form})
 
-def profile(request, user_id):
-  user = UserProfile.objects.get(id=user_id)
-  profile_form = ProfileForm()
-  return render(request, 'user/profile.html', {
-    'user': user,
-    'profile_form': profile_form
-  })
+def user_index(request):
+  users = User.objects.all()
+  return render(request, 'user/index.html', {'users': users})
 
 class ElogCreate(CreateView):
   model = Elog
