@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Palette+Mosaic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cairo&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -7,12 +10,17 @@
 body {
   display: flex;
   flex-direction: column;
+  max-width: 1600px;
   min-height: 100vh;
+  font-family: 'Cairo', sans-serif;
 }
 
 /* Navbar */
+
 .nav-container {
-  max-width: 1280px;
+  background-color: #F4F0EA;
+  /* max-width: 1280px; */
+  max-width: 1600px;
   margin: auto;
   height: 80px;
   display: flex;
@@ -42,18 +50,17 @@ a {
 }
 
 .nav-links {
-  color: #333;
-  font-weight: 600;
+  color: #000;
   cursor: pointer;
 }
 
 .logo {
   margin-right: 200px;
   font-size: 45px;
-  font-weight: 600;
+  font-family: 'Palette Mosaic', cursive;
 }
 
-/* features */
+/* home page features */
 .box {
   float: left;
   width: 33.3%;
@@ -65,11 +72,40 @@ a {
   margin-bottom: 10px;
 }
 
+/* signup page */
+h1 {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.signup-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+/* About page */
+h2 {
+  margin-top: 20px;
+}
+
+.btn {
+  background-color: #f9f4dd;
+  color: #333;
+  margin: 10px
+}
+
+.btn:hover {
+  background-color: #E5F5C7;
+}
+
 main {
   flex-grow: 1;
 }
 
 footer {
+  background-color: #F4F0EA;
   padding-bottom: 8px;
   text-align: center;
 }
