@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Your Exercise History</h1>
+
+{% for elog in userprofile.elog_set.all %}
+    {{user.id}} {{elog.user_id}} {{elog.id}} {{elog.date_time}}  {{elog.name}} {{elog.distance_miles}} {{elog.length_of_time}} {{elog.reps_laps}} {{elog.weight_pounds}} 
+    {{elog.intensity}} {{elog.pace_minutes_per_mile}} {{elog.calories_burned}} 
+
+    <a href="{% url 'elogs_update' elog.id %}">Edit</a>
+    <a href="{% url 'elogs_delete' elog.id %}">Delete</a>
+    
+{% endfor %}
+
+<a href="{% url 'elogs_create' %}">Add a New Exercise Event</a>
+
+{% endblock %}
