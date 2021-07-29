@@ -2,24 +2,5 @@
 {% block content %}
 
     <h1>Profile Summary</h1>
-    
-    <div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Meal Type</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for flog in userprofile.flog_set.all %}
-                    <tr>
-                        <td>{{ flog.date_time }}</td>
-                        <td>{{ flog.get_meal_type_display }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
    
 {% endblock %}
