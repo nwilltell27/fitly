@@ -3,6 +3,7 @@ from django.contrib.auth import login
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import UserProfile, User, Elog
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def home(request):
@@ -24,6 +25,7 @@ def signup(request):
   form = UserCreationForm()
   return render(request, 'registration/signup.html', {'form': form, 'error_message': error_message})
 
+@login_required
 def user_index(request):
   users = User.objects.all()
   return render(request, 'user/index.html', {'users': users})
