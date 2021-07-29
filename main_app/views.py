@@ -4,6 +4,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import UserProfile, User, Elog
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 def home(request):
@@ -30,7 +31,7 @@ def user_index(request):
   users = User.objects.all()
   return render(request, 'user/index.html', {'users': users})
 
-class ElogCreate(CreateView):
+class ElogCreate(LoginRequiredMixin, CreateView):
   model = Elog
   fields = [ 
     'date_time',
@@ -46,7 +47,7 @@ class ElogCreate(CreateView):
 def get_initial(self):
     return { 'user_id': self.request.user }
 
-class ElogUpdate(UpdateView):
+class ElogUpdate(LoginRequiredMixin, UpdateView):
   model = Elog
   fields = [ 
     'name', 
@@ -58,14 +59,16 @@ class ElogUpdate(UpdateView):
     'pace_minutes_per_mile', 
     'calories_burned']
 
-class ElogDelete(DeleteView):
+class ElogDelete(LoginRequiredMixin, DeleteView):
   model = Elog
   success_url = '/elogs/'
 
+@login_required
 def elogs_index(request):
   elogs = Elog.objects.all()
   return render(request, 'elogs/index.html', {'elogs': elogs})
 
+@login_required
 def elogs_detail(request, user_id):
   userprofile = UserProfile.objects.get(id=user_id)
   return render(request, 'elogs/detail.html', {'userprofile': userprofile})
