@@ -97,7 +97,7 @@ class Flog(models.Model):
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
 
     def __str__(self):
-      return self.name
+      return f"Had {self.name} for {self.get_meal_type_display()} on {self.date_time}"
 '''
     def get_absolute_url(self):
       return reverse('flog_detail', kwargs={'date_time': self.id})
