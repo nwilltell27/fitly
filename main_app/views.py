@@ -20,11 +20,14 @@ def signup(request):
     if form.is_valid():
       user = form.save()
       login(request, user)
-      return redirect('user_index')
+      return redirect('profile')
     else: error_message = 'Invalid Signup Data - Please Try Again'
 
   form = UserCreationForm()
   return render(request, 'registration/signup.html', {'form': form, 'error_message': error_message})
+
+def profile(request):
+  return render(request, 'registration/profile.html')
 
 @login_required
 def user_index(request):
@@ -59,7 +62,7 @@ class ElogUpdate(LoginRequiredMixin, UpdateView):
     'pace_minutes_per_mile', 
     'calories_burned']
 
-class ElogDelete(LoginRequiredMixin, DeleteView):
+class ElogDelete(LoginRequiredMixin,DeleteView):
   model = Elog
   success_url = '/elogs/'
 
