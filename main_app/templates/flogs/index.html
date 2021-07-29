@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>List of all users and their meals/snacks</h1>
+
+{% for flog in flogs %}
+    {{flog.user_id}} {{flog.date_time}} {{flog.meal_type}} {{flog.name}} {{flog.servings}}
+{% endfor %}
+
+{% endblock %}
