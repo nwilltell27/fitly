@@ -86,7 +86,7 @@ class Food(models.Model):
       return reverse('food_detail', kwargs={'name': self.id})
 '''
 class Flog(models.Model):
-    date_time = models.DateTimeField()
+    date_time = models.DateTimeField('meal date')
     meal_type = models.CharField(
       max_length=1,
       choices=MEAL_TYPE,
