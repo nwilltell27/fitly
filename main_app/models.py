@@ -87,7 +87,11 @@ class Food(models.Model):
 '''
 class Flog(models.Model):
     date_time = models.DateTimeField()
-    meal_type = models.CharField(max_length = 1)
+    meal_type = models.CharField(
+      max_length=1,
+      choices=MEAL_TYPE,
+      default=MEAL_TYPE[0][0]
+    )
     name = models.CharField(max_length=50)
     servings = models.DecimalField(max_digits=5, decimal_places=2) 
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
