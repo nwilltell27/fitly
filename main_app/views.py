@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import login
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import UserProfile, User, Elog
+from .models import UserProfile, User, Elog, Flog
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -75,3 +75,37 @@ def elogs_index(request):
 def elogs_detail(request, user_id):
   userprofile = UserProfile.objects.get(id=user_id)
   return render(request, 'elogs/detail.html', {'userprofile': userprofile})
+
+class FlogCreate(LoginRequiredMixin, CreateView):
+  model = Flog
+  fields = [ 
+    'date_time', 
+    'meal_type', 
+    'name', 
+    'servings'
+  ]
+
+def get_initial(self):
+    return { 'user_id': self.request.user }
+
+class FlogUpdate(LoginRequiredMixin, UpdateView):
+  model = Flog
+  fields = [ 
+    'meal_type', 
+    'name', 
+    'servings'
+  ]
+
+class FlogDelete(LoginRequiredMixin,DeleteView):
+  model = Flog
+  success_url = '/flogs/'
+
+@login_required
+def flogs_index(request):
+  flogs = Flog.objects.all()
+  return render(request, 'flogs/index.html', {'flogs': flogs})
+
+@login_required
+def flogs_detail(request, user_id):
+  userprofile = UserProfile.objects.get(id=user_id)
+  return render(request, 'flogs/detail.html', {'userprofile': userprofile})

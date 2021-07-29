@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import UserProfile, Elog
+from .models import UserProfile, Elog, Flog
 
 class ProfileForm(ModelForm):
     class Meta:
@@ -17,3 +17,13 @@ class ElogForm(ModelForm):
             'intensity', 
             'pace_minutes_per_mile', 
             'calories_burned', ]
+
+class FlogForm(ModelForm):
+    class Meta:
+        model = Flog
+        fields = [ 
+            'date_time', 
+            'meal_type', 
+            'name', 
+            'servings'
+        ]
