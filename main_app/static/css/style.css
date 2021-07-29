@@ -148,12 +148,21 @@ h2 {
 
 /* login */
 form {
-  text-align: center;
-  margin: 20px;
-  font-size: 18px;
-  height: 900px;
+  /* text-align: center; */
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+  margin: 10px;
+  font-size: 20px;
+  height: 800px;
   background: url('../img/test-bg.jpeg') no-repeat center center/cover;
-  padding-top: 80px;
+  padding-top: 200px;
+}
+
+form input {
+  border: #ddd 2px solid;
+  border-radius: 5px;
 }
 
 main {
