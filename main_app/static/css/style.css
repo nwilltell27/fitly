@@ -147,22 +147,64 @@ h2 {
 }
 
 /* login */
-form {
-  /* text-align: center; */
+.form-container form {
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   flex-direction: column;
-  margin: 10px;
   font-size: 20px;
-  height: 800px;
-  background: url('../img/test-bg.jpeg') no-repeat center center/cover;
+  height: 850px;
+  background: url('../img/main-bg.jpeg') no-repeat center center/cover;
   padding-top: 200px;
 }
 
-form input {
-  border: #ddd 2px solid;
+.form-container form input {
+  border: #ddd 1px solid;
   border-radius: 5px;
+}
+
+.form-container h1 {
+  margin-bottom: 30px;
+}
+
+/* signup page */
+.signup-form-container form {
+  font-size: 20px;
+  height: 850px;
+  background: url('../img/main-bg.jpeg') no-repeat center center/cover;
+  padding-left: 650px;
+  padding-top: 100px;
+}
+
+.signup-form-container form ul {
+  display: block;
+  text-align: left;
+}
+
+.signup-form-container form ul li {
+  font-size: 14px;
+}
+
+.signup-form-container form span {
+  display: block;
+  font-size: 14px;
+}
+
+.signup-form-container form p {
+  text-align: left;
+}
+
+.signup-form-container form input {
+  border: #ddd 1px solid;
+  border-radius: 5px;
+}
+
+.signup-form-container h1 {
+  padding-right: 600px;
+  margin-bottom: 30px;
+}
+
+.signup-form-container .btn {
+  margin-left: 100px;
 }
 
 main {
