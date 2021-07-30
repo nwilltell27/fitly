@@ -6,7 +6,7 @@ urlpatterns = [
   path('about/', views.about, name='about'),
   path('user/signup/', views.signup, name='signup'),
   path('user/index/', views.user_index, name='user_index'),
-  # path('user/create/', views.ProfileCreate.as_view(), name='profile_create'),
+  path('user/create/', views.ProfileCreate.as_view(), name='profile_create'),
   # Exercise Log CRUD
   path('elogs/', views.elogs_index, name="index"),
   path('elogs/<int:user_id>/', views.elogs_detail, name='detail'),
