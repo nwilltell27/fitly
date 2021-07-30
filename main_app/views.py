@@ -6,9 +6,10 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-class ProfileCreate(CreateView):
+class ProfileCreate(LoginRequiredMixin, CreateView):
   model = UserProfile
-  fields = ['user', 'height_feet', 'current_weight', 'goal_weight', 'current_BMI', 'goal_BMI']
+  fields = ['user', 'height_feet', 'height_inches', 'current_weight', 'goal_weight', 'current_BMI', 'goal_BMI']
+  success_url = '/user/index'
 
 # Create your views here.
 def home(request):
@@ -34,8 +35,8 @@ def profile(request):
   return render(request, 'registration/profile.html')
 
 @login_required
-def user_index(request):
-  user = UserProfile.objects.all()
+def user_index(request, user_id):
+  user = UserProfile.objects.all(id=user_id)
   return render(request, 'user/index.html', {'user': user})
 
 class ElogCreate(LoginRequiredMixin, CreateView):
