@@ -47,3 +47,6 @@ Welcome to **FitLy**, the fitness application designed to help users track exerc
 ## Future Enhancements
 1. Implement 3rd Party API to show nutrition stats for types of food, ingredients, etc. 
 2. Create charts to show user progress over time. 
+3. Have widgets on bottom of **Home Page** link to helpful articles related to achieving a healthy lifestyle.
+    1. _Healthy Diets_ brings you to a page with options for various meal plans depending on your fitness goals. 
+    2. _Fitness_ brings you to a page with various exercises for different muscle groups. 
