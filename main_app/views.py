@@ -1,10 +1,16 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import login
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import UserProfile, User, Elog, Flog
+from .models import UserProfile, Elog, Flog
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
+
+class ProfileCreate(LoginRequiredMixin, CreateView):
+  model = UserProfile
+  fields = ['user', 'height_feet', 'height_inches', 'current_weight', 'goal_weight', 'current_BMI', 'goal_BMI']
+  success_url = '/user/index'
 
 # Create your views here.
 def home(request):
@@ -30,9 +36,9 @@ def profile(request):
   return render(request, 'registration/profile.html')
 
 @login_required
-def user_index(request):
-  users = User.objects.all()
-  return render(request, 'user/index.html', {'users': users})
+def user_index(request, user_id):
+  user = User.objects.get(id=user_id)
+  return render(request, 'user/index.html', {'user': user})
 
 class ElogCreate(LoginRequiredMixin, CreateView):
   model = Elog
