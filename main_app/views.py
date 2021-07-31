@@ -5,6 +5,7 @@ from .models import UserProfile, Elog, Flog
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 
 class ProfileCreate(LoginRequiredMixin, CreateView):
   model = UserProfile
@@ -36,7 +37,7 @@ def profile(request):
 
 @login_required
 def user_index(request, user_id):
-  user = UserProfile.objects.all(id=user_id)
+  user = User.objects.get(id=user_id)
   return render(request, 'user/index.html', {'user': user})
 
 class ElogCreate(LoginRequiredMixin, CreateView):

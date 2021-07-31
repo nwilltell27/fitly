@@ -28,11 +28,13 @@ class UserProfile(models.Model):
     goal_carbs_grams = models.IntegerField()
     goal_proteins_grams = models.IntegerField()
     goal_fats_grams = models.IntegerField()
-'''
+
     def __str__(self):
       return self.user_id
     def get_absolute_url(self):
       return reverse('detail', kwargs={'user_id': self.id})
+
+'''      
 class Exercise(models.Model):
     name = models.CharField(max_length=50)
     time_minutes = models.IntegerField()
